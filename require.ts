@@ -23,7 +23,13 @@ export async function require(
 
   document.head.appendChild(script);
 
+  if (!options.check) {
+    return await new Promise((resolve) => {
+      script.onload = () => resolve(true);
+    });
+  }
+
   return await new Promise((resolve) => {
-    script.onload = () => resolve(true);
+    script.onload = () => resolve(options.check!());
   });
 }
