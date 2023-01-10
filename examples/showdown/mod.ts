@@ -1,1 +1,1 @@
-export * from "./require_showdown.ts";
+export * from "./showdown.ts";

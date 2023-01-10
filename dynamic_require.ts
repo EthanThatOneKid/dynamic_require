@@ -1,14 +1,14 @@
-export interface RequireOptions {
+export interface DynamicOptions {
   check?: () => boolean;
   module?: boolean;
 }
 
 /**
- * require the specified module.
+ * dynamicRequire dynamically imports the specified script.
  */
-export async function require(
+export async function dynamicRequire(
   specifier: string,
-  options: RequireOptions = {},
+  options: DynamicOptions = {},
 ): Promise<boolean> {
   if (options.check && options.check()) {
     return true;

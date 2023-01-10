@@ -1,14 +1,14 @@
-import { requireThreeAddon } from "./require_three_addon.ts";
+import { dynamicRequireThreeAddon } from "./three_addon.ts";
 
-export interface RequireThreeAddonControlsOrbitControlsOptions {
+export interface ThreeAddonOrbitControlsDynamicOptions {
   version?: string;
 }
 
 // TODO: Add tests.
-export async function requireThreeAddonControlsOrbitControls(
-  options: RequireThreeAddonControlsOrbitControlsOptions = {},
+export async function dynamicRequireThreeAddonOrbitControls(
+  options: ThreeAddonOrbitControlsDynamicOptions = {},
 ) {
-  return await requireThreeAddon(
+  return await dynamicRequireThreeAddon(
     "controls/OrbitControls.js",
     {
       version: options.version,

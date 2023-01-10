@@ -1,13 +1,15 @@
-import { require } from "../../require.ts";
+import { dynamicRequire } from "../../dynamic_require.ts";
 
-export interface RequireShowdownOptions {
+export interface ShowdownDynamicOptions {
   version?: string;
 }
 
 // TODO: Add tests.
-export async function requireShowdown(options: RequireShowdownOptions = {}) {
+export async function dynamicRequireShowdown(
+  options: ShowdownDynamicOptions = {},
+) {
   const version = options.version || "latest";
-  return await require(
+  return await dynamicRequire(
     `https://cdn.jsdelivr.net/npm/showdown@${version}/dist/showdown.min.js`,
     {
       check() {

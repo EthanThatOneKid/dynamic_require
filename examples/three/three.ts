@@ -1,14 +1,14 @@
-import { require } from "../../require.ts";
+import { dynamicRequire } from "../../dynamic_require.ts";
 
-export interface RequireThreeOptions {
+export interface ThreeDynamicOptions {
   version?: string;
 }
 
 // TODO: Add tests.
-export async function requireThree(options: RequireThreeOptions = {}) {
+export async function dynamicRequireThree(options: ThreeDynamicOptions = {}) {
   const version = options.version || "latest";
 
-  return await require(
+  return await dynamicRequire(
     `https://unpkg.com/three@${version}/build/three.module.js`,
     {
       module: true,
