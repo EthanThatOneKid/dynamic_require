@@ -1,6 +1,6 @@
 # `etok.codes/require`
 
-Require arbitrary scripts
+Require arbitrary scripts.
 
 ## Purpose
 
@@ -17,7 +17,7 @@ web.
 
 The `require` function is like a replacement for `import` in the browser. It
 supports loading modules from the web. This API allows you to load modules via
-[**bookmarklet**](https://github.com/EthanThatOneKid/bmt#readme).
+[_bookmarklet_](https://deno.land/x/bmt).
 
 ## Usage
 
@@ -36,7 +36,7 @@ View results on [CodePen](https://codepen.io/EthanDavidson/pen/ZEjLLwP).
 
 ## License
 
-MIT License
+[MIT License](LICENSE)
 
 ---
 
