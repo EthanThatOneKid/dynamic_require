@@ -6,9 +6,12 @@ export interface RequireOptions {
 /**
  * require the specified module.
  */
-export async function require(specifier: string, options: RequireOptions = {}) {
+export async function require(
+  specifier: string,
+  options: RequireOptions = {},
+): Promise<boolean> {
   if (options.check && !options.check()) {
-    return;
+    return false;
   }
 
   const script = document.createElement("script");
@@ -20,9 +23,7 @@ export async function require(specifier: string, options: RequireOptions = {}) {
 
   document.head.appendChild(script);
 
-  return await new Promise<void>((resolve) => {
-    script.onload = () => {
-      resolve();
-    };
+  return await new Promise<boolean>((resolve) => {
+    script.onload = () => resolve(true);
   });
 }
