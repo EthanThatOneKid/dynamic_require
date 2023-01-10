@@ -10,8 +10,8 @@ export async function require(
   specifier: string,
   options: RequireOptions = {},
 ): Promise<boolean> {
-  if (options.check && !options.check()) {
-    return false;
+  if (options.check && options.check()) {
+    return true;
   }
 
   const script = document.createElement("script");
@@ -27,8 +27,14 @@ export async function require(
 
   document.head.appendChild(script);
 
+  if (!options.check) {
+    return await new Promise((resolve) => {
+      script.onload = () => resolve(true);
+    });
+  }
+
   return await new Promise((resolve) => {
-    script.onload = () => resolve(true);
+    script.onload = () => resolve(options.check!());
   });
 }
 
