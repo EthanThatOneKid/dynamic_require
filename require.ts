@@ -18,6 +18,10 @@ export async function require(
   script.src = specifier;
 
   if (options.module) {
+    if (!checkModuleSupport()) {
+      return false;
+    }
+
     script.type = "module";
   }
 
@@ -32,4 +36,16 @@ export async function require(
   return await new Promise((resolve) => {
     script.onload = () => resolve(options.check!());
   });
+}
+
+function checkModuleSupport(): boolean {
+  if ("supports" in HTMLScriptElement) {
+    return HTMLScriptElement.supports("module");
+  }
+
+  if ("noModule" in document.createElement("script")) {
+    return true;
+  }
+
+  throw new Error("Module support is not available in this browser");
 }
