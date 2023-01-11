@@ -1,31 +1,31 @@
-# `etok.codes/require`
+# `etok.codes/dynamic_require`
 
-Require arbitrary scripts.
+Require of arbitrary scripts dynamically from the web.
 
 ## Purpose
 
-`require` is a simple async function that allows you to require arbitrary
-scripts from the web. It's useful for loading scripts that are publicly
-available on the web, but not available on npm.
+`dynamic_require` is a simple async function that allows you to import scripts
+dynamically from the web into the global scope. It's useful for importing
+scripts that are publicly available on the web.
 
 ## Known limitations
 
-The `require` function is not a drop-in replacement for `require` in node. It
-does not support loading local files, or loading modules from `node_modules`. It
-also does not support loading modules that are not publicly available on the
-web.
+The `dynamic_require` function is not a drop-in replacement for
+`dynamic_require` in node. It does not support loading local files, or loading
+modules from `node_modules`. It also does not support loading modules that are
+not publicly available on the web.
 
-The `require` function is like a replacement for `import` in the browser. It
-supports loading modules from the web. This API allows you to load modules via
-[_bookmarklet_](https://deno.land/x/bmt).
+The `dynamic_require` function is like a replacement for `import` in the
+browser. It supports loading modules from the web. This API allows you to load
+modules via [_bookmarklet_](https://deno.land/x/bmt).
 
 ## Usage
 
 ```html
 <script type="module">
-    import { require } from "https://bundle.deno.dev/https://etok.codes/require/raw/main/mod.ts";
+    import { dynamicRequire } from "https://bundle.deno.dev/https://etok.codes/dynamic_require/raw/main/mod.ts";
 
-    await require("https://cdn.jsdelivr.net/npm/showdown@latest/dist/showdown.min.js");
+    await dynamicRequire("https://cdn.jsdelivr.net/npm/showdown@latest/dist/showdown.min.js");
     const converter = new showdown.Converter();
     const html = converter.makeHtml("# Hello, markdown!");
     document.body.innerHTML = html;
